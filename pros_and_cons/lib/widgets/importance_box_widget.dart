@@ -6,10 +6,11 @@ class ImportanceBoxWidget extends StatelessWidget {
   final bool isSelected;
 
   const ImportanceBoxWidget({
+    Key? key,
     required this.value,
     required this.isProSelected,
     required this.isSelected,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

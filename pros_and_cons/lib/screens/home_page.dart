@@ -34,8 +34,8 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.only(
-            left: 24,
-            right: 24,
+            left: 20,
+            right: 20,
           ),
           child: Column(
             children: [
@@ -121,8 +121,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _updateData() async {
-    print("Update data");
-
     var _decisions = await _dbHelper.getAllDecisions();
 
     Map<int, List<Argument>> argumentMap = {};

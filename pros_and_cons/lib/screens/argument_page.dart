@@ -30,6 +30,8 @@ class _ArgumentPageState extends State<ArgumentPage> {
       _valueSelected = widget.argument?.value;
     }
 
+    _textEditingController.addListener(_textFieldChanged);
+
     super.initState();
   }
 
@@ -240,7 +242,7 @@ class _ArgumentPageState extends State<ArgumentPage> {
                   top: 8,
                 ),
                 child: ElevatedButton(
-                  onPressed: (_isProSelected != null && _valueSelected != null)
+                  onPressed: _isValidFilled()
                       ? _saveArgumentAndGoBack
                       : null,
                   child: const Text("Save"),
@@ -276,24 +278,32 @@ class _ArgumentPageState extends State<ArgumentPage> {
         );
 
         if (widget.argument != null) {
-          print("update");
-
-          _dbHelper.updateArgument(
+          _dbHelper
+              .updateArgument(
             widget.argument!.id!,
             widget.decisionId,
             _newArgument.title,
             _newArgument.value,
             _newArgument.isPro,
-          );
+          )
+              .then((value) => {Navigator.pop(context)});
         } else {
-          _dbHelper.insertArgument(_newArgument);
+          _dbHelper
+              .insertArgument(_newArgument)
+              .then((value) => {Navigator.pop(context)});
         }
-
-        Navigator.pop(context);
       }
-    } else {
-      //TODO: Show error on title
     }
+  }
+
+  bool _isValidFilled() {
+    return _textEditingController.text.isNotEmpty &&
+        _isProSelected != null &&
+        _valueSelected != null;
+  }
+
+  void _textFieldChanged() {
+    setState(() {});
   }
 
   Color _getButtonColor() {

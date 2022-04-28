@@ -6,10 +6,11 @@ class ArgumentRowWidget extends StatelessWidget {
   final int score;
 
   const ArgumentRowWidget({
+    Key? key,
     required this.isPro,
     required this.title,
     required this.score,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,9 @@ class ArgumentRowWidget extends StatelessWidget {
                   title,
                   style: TextStyle(
                     backgroundColor: Colors.white,
-                    color: isPro ? const Color(0xFF338162) : const Color(0xFFD11654),
+                    color: isPro
+                        ? const Color(0xFF338162)
+                        : const Color(0xFFD11654),
                     fontSize: 20,
                   ),
                 ),
@@ -47,7 +50,8 @@ class ArgumentRowWidget extends StatelessWidget {
               child: Text(
                 "$score",
                 style: TextStyle(
-                  color: isPro ? const Color(0xFF338162) : const Color(0xFFD11654),
+                  color:
+                      isPro ? const Color(0xFF338162) : const Color(0xFFD11654),
                   fontSize: 20,
                 ),
               ),

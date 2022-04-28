@@ -97,6 +97,7 @@ class DatabaseHelper {
       where: 'id = ?',
       whereArgs: [id],
     );
+    deleteArguments(id);
   }
 
   Future<void> deleteArgument(int id) async {
@@ -105,6 +106,15 @@ class DatabaseHelper {
       'arguments',
       where: 'id = ?',
       whereArgs: [id],
+    );
+  }
+
+  Future<void> deleteArguments(int decisionId) async {
+    Database _db = await getDatabase();
+    _db.delete(
+      'arguments',
+      where: 'decisionId = ?',
+      whereArgs: [decisionId],
     );
   }
 }

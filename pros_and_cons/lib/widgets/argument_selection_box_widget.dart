@@ -5,9 +5,10 @@ class ProOrConBoxWidget extends StatelessWidget {
   final bool isSelected;
 
   const ProOrConBoxWidget({
+    Key? key,
     required this.isPro,
     required this.isSelected,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -7,10 +7,11 @@ class DecisionCardWidget extends StatelessWidget {
 
   //const DecisionCardWidget({Key? key}) : super(key: key);
   const DecisionCardWidget({
+    Key? key,
     required this.decisionTitle,
     required this.prosNumber,
     required this.consNumber,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
