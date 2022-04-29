@@ -42,7 +42,7 @@ class _DecisionPageState extends State<DecisionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFEEEEE5),
+        backgroundColor: Color(0xFFEEEEEE),
         elevation: 0,
         foregroundColor: Colors.black,
         automaticallyImplyLeading: false,
@@ -81,194 +81,200 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
         ],
       ),
-      backgroundColor: const Color(0xFFEEEEE5),
+      backgroundColor: Color(0xFFEEEEEE),
       body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-          child: Column(
-            children: [
-              TextField(
-                controller: _textController,
-                keyboardType: TextInputType.multiline,
-                decoration: const InputDecoration(
-                  hintText: "Whats your decision?",
-                  border: InputBorder.none,
-                ),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: Color(0xFF211551),
-                ),
-              ),
-              Visibility(
-                visible: _arguments.isNotEmpty,
-                child: Text(
-                  _getResultText(),
-                  style: TextStyle(
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    color: _getResultColor(),
+        child: GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: Column(
+              children: [
+                TextField(
+                  controller: _textController,
+                  keyboardType: TextInputType.multiline,
+                  decoration: const InputDecoration(
+                    hintText: "Whats your decision?",
+                    border: InputBorder.none,
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    color: Color(0xFF211551),
                   ),
                 ),
-              ),
-              Flexible(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              const Text(
-                                "Pros",
-                                style: TextStyle(
-                                  color: Color(0xFF338162),
-                                  fontSize: 20,
+                Visibility(
+                  visible: _arguments.isNotEmpty,
+                  child: Text(
+                    _getResultText(),
+                    style: TextStyle(
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: _getResultColor(),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                const Text(
+                                  "Pros",
+                                  style: TextStyle(
+                                    color: Color(0xFF338162),
+                                    fontSize: 20,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                "$_prosSum",
-                                style: const TextStyle(
-                                  color: Color(0xFF338162),
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
+                                Text(
+                                  "$_prosSum",
+                                  style: const TextStyle(
+                                    color: Color(0xFF338162),
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            height: 55,
-                            width: 4,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5),
+                              ],
+                            ),
+                            Container(
+                              height: 55,
+                              width: 4,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
                               ),
                             ),
-                          ),
-                          Column(
-                            children: [
-                              const Text(
-                                "Cons",
-                                style: TextStyle(
-                                  color: Color(0xFFD11654),
-                                  fontSize: 20,
-                                ),
-                              ),
-                              Text(
-                                "$_consSum",
-                                style: const TextStyle(
-                                  color: Color(0xFFD11654),
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Flexible(
-                      child: ListView(
-                        children: [
-                          Visibility(
-                            visible: _prosSum > 0,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                bottom: 8,
-                              ),
-                              child: Row(
-                                children: const [
-                                  Text(
-                                    "Pros",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
+                            Column(
+                              children: [
+                                const Text(
+                                  "Cons",
+                                  style: TextStyle(
+                                    color: Color(0xFFD11654),
+                                    fontSize: 20,
                                   ),
-                                  Spacer(),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      right: 34,
-                                    ),
-                                    child: Text(
-                                      "Score",
+                                ),
+                                Text(
+                                  "$_consSum",
+                                  style: const TextStyle(
+                                    color: Color(0xFFD11654),
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                        child: ListView(
+                          children: [
+                            Visibility(
+                              visible: _prosSum > 0,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8,
+                                ),
+                                child: Row(
+                                  children: const [
+                                    Text(
+                                      "Pros",
                                       style: TextStyle(
                                         fontSize: 20,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Spacer(),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        right: 34,
+                                      ),
+                                      child: Text(
+                                        "Score",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          _getListColumn(true),
-                          Visibility(
-                            visible: _consSum > 0,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 16,
-                                bottom: 8,
-                              ),
-                              child: Row(
-                                children: const [
-                                  Text(
-                                    "Cons",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      right: 34,
-                                    ),
-                                    child: Text(
-                                      "Score",
+                            _getListColumn(true),
+                            Visibility(
+                              visible: _consSum > 0,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 16,
+                                  bottom: 8,
+                                ),
+                                child: Row(
+                                  children: const [
+                                    Text(
+                                      "Cons",
                                       style: TextStyle(
                                         fontSize: 20,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Spacer(),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        right: 34,
+                                      ),
+                                      child: Text(
+                                        "Score",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          _getListColumn(false),
-                        ],
+                            _getListColumn(false),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 8,
-                ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    _navigateToArgument(null);
-                  },
-                  child: const Text("New argument"),
-                  style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.white,
-                    primary: const Color(0xFF562B42),
-                    elevation: 10,
-                    textStyle: const TextStyle(
-                      fontSize: 20,
-                    ),
-                    minimumSize: const Size(
-                      double.infinity,
-                      45,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                    bottom: 16,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _navigateToArgument(null);
+                    },
+                    child: const Text("New argument"),
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.white,
+                      primary: Colors.black87,
+                      elevation: 10,
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                      ),
+                      minimumSize: const Size(
+                        double.infinity,
+                        45,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

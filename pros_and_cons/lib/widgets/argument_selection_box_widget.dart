@@ -14,7 +14,7 @@ class ProOrConBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 105,
+      height: 90,
       decoration: BoxDecoration(
         border: Border.all(
           color: _getCorrectColor(),

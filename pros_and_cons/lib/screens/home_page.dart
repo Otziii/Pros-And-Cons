@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEEEEE5),
+      backgroundColor: const Color(0xFFEEEEEE),
       body: SafeArea(
         child: Container(
           width: double.infinity,
@@ -40,63 +40,67 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.fromLTRB(64, 16, 64, 32),
+                margin: const EdgeInsets.only(
+                  top: 16,
+                  bottom: 8,
+                ),
                 child: const Image(
                   image: AssetImage(
                     'assets/images/logo.png',
                   ),
+                  height: 60,
                 ),
               ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 4,
-                  ),
-                  child: FutureBuilder(
-                    initialData: List<Decision>.empty(),
-                    future: _dbHelper.getAllDecisions(),
-                    builder: (context, snapshot) {
-                      List<Decision> _list = snapshot.data as List<Decision>? ??
-                          List<Decision>.empty();
+                child: FutureBuilder(
+                  initialData: List<Decision>.empty(),
+                  future: _dbHelper.getAllDecisions(),
+                  builder: (context, snapshot) {
+                    List<Decision> _list = snapshot.data as List<Decision>? ??
+                        List<Decision>.empty();
 
-                      return ListView.builder(
-                        itemCount: _list.length,
-                        itemBuilder: (context, index) {
-                          Decision _decision = _list[index];
+                    return ListView.builder(
+                      itemCount: _list.length,
+                      itemBuilder: (context, index) {
+                        Decision _decision = _list[index];
 
-                          return GestureDetector(
-                            onTap: () {
-                              _navigateToDecision(_decision);
-                            },
-                            child: DecisionCardWidget(
-                              decisionTitle: _decision.title.isNotEmpty
-                                  ? _decision.title
-                                  : "(No title)",
-                              prosNumber: _prosSumMap[_decision.id!] ?? 0,
-                              consNumber: _consSumMap[_decision.id!] ?? 0,
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                        return GestureDetector(
+                          onTap: () {
+                            _navigateToDecision(_decision);
+                          },
+                          child: DecisionCardWidget(
+                            decisionTitle: _decision.title.isNotEmpty
+                                ? _decision.title
+                                : "(No title)",
+                            prosNumber: _prosSumMap[_decision.id!] ?? 0,
+                            consNumber: _consSumMap[_decision.id!] ?? 0,
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  _navigateToDecision(null);
-                },
-                child: const Text("New decision"),
-                style: ElevatedButton.styleFrom(
-                  onPrimary: Colors.white,
-                  primary: const Color(0xFF562B42),
-                  elevation: 10,
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                  ),
-                  minimumSize: const Size(
-                    double.infinity,
-                    45,
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 16,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _navigateToDecision(null);
+                  },
+                  child: const Text("New decision"),
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.black87,
+                    elevation: 10,
+                    textStyle: const TextStyle(
+                      fontSize: 20,
+                    ),
+                    minimumSize: const Size(
+                      double.infinity,
+                      45,
+                    ),
                   ),
                 ),
               ),

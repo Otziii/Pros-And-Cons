@@ -18,7 +18,24 @@ class DecisionCardWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(
         bottom: 16,
+        left: 8,
+        right: 8,
+        top: 5,
       ),
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: const Offset(
+                  0,
+                  2,
+                )),
+          ],
+          borderRadius: const BorderRadius.all(
+            Radius.circular(5),
+          )),
       child: Column(
         children: [
           Container(
@@ -38,7 +55,7 @@ class DecisionCardWidget extends StatelessWidget {
               decisionTitle,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 25,
+                fontSize: 22,
               ),
               textAlign: TextAlign.center,
             ),
@@ -74,7 +91,7 @@ class DecisionCardWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Color(0xFF338162),
-                        fontSize: 70,
+                        fontSize: 60,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -104,7 +121,7 @@ class DecisionCardWidget extends StatelessWidget {
                       "$consNumber",
                       style: const TextStyle(
                         color: Color(0xFFD11654),
-                        fontSize: 70,
+                        fontSize: 60,
                         fontWeight: FontWeight.bold,
                       ),
                       textAlign: TextAlign.center,
@@ -125,7 +142,7 @@ class DecisionCardWidget extends StatelessWidget {
     } else if (prosNumber < consNumber) {
       return const Color(0xFFD11654);
     } else {
-      return Colors.black87;
+      return const Color(0xFF562B42);
     }
   }
 }
