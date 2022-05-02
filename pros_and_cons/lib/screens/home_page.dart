@@ -4,6 +4,7 @@ import 'package:pros_and_cons/models/argument.dart';
 import 'package:pros_and_cons/widgets/decision_card_widget.dart';
 import 'package:pros_and_cons/screens/decision_page.dart';
 
+import '../colors.dart';
 import '../models/decision.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEEEEEE),
+      backgroundColor: CustomColors.pcBackground,
       body: SafeArea(
         child: Container(
           width: double.infinity,

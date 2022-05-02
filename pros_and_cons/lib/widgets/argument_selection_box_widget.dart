@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class ProOrConBoxWidget extends StatelessWidget {
   final bool isPro;
   final bool isSelected;
@@ -39,16 +41,12 @@ class ProOrConBoxWidget extends StatelessWidget {
   Color _getCorrectColor() {
     if (isSelected) {
       if (isPro) {
-        return const Color(0xFF338162);
+        return CustomColors.pcGreen;
       } else {
-        return const Color(0xFFD11654);
+        return CustomColors.pcRed;
       }
     } else {
       return Colors.black;
     }
   }
 }
-
-// Green:   Color(0xFF338162)
-// Red:     Color(0xFFD11654)
-// Purple:  Color(0xFF562B42)

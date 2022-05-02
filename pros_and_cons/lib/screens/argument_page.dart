@@ -3,6 +3,7 @@ import 'package:pros_and_cons/models/argument.dart';
 import 'package:pros_and_cons/widgets/argument_selection_box_widget.dart';
 import 'package:pros_and_cons/widgets/importance_box_widget.dart';
 
+import '../colors.dart';
 import '../database_helper.dart';
 
 class ArgumentPage extends StatefulWidget {
@@ -39,7 +40,7 @@ class _ArgumentPageState extends State<ArgumentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFEEEEEE),
+        backgroundColor: CustomColors.pcBackground,
         elevation: 0,
         foregroundColor: Colors.black,
         actions: [
@@ -62,7 +63,7 @@ class _ArgumentPageState extends State<ArgumentPage> {
           ),
         ],
       ),
-      backgroundColor: Color(0xFFEEEEEE),
+      backgroundColor: CustomColors.pcBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () {
@@ -87,7 +88,7 @@ class _ArgumentPageState extends State<ArgumentPage> {
                           border: InputBorder.none,
                         ),
                         style: const TextStyle(
-                          fontSize: 30,
+                          fontSize: 25,
                           color: Colors.black,
                         ),
                         textAlign: TextAlign.center,
@@ -343,9 +344,9 @@ class _ArgumentPageState extends State<ArgumentPage> {
 
   Color _getButtonColor() {
     if (_isProSelected == true) {
-      return const Color(0xFF338162);
+      return CustomColors.pcGreen;
     } else if (_isProSelected == false) {
-      return const Color(0xFFD11654);
+      return CustomColors.pcRed;
     } else {
       return Colors.grey;
     }

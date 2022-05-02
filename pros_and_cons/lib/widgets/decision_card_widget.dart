@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../colors.dart';
 
 class DecisionCardWidget extends StatelessWidget {
   final String decisionTitle;
@@ -81,7 +82,7 @@ class DecisionCardWidget extends StatelessWidget {
                     const Text(
                       "Pros",
                       style: TextStyle(
-                        color: Color(0xFF338162),
+                        color: CustomColors.pcGreen,
                         fontSize: 20,
                       ),
                       textAlign: TextAlign.center,
@@ -90,7 +91,7 @@ class DecisionCardWidget extends StatelessWidget {
                       "$prosNumber",
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Color(0xFF338162),
+                        color: CustomColors.pcGreen,
                         fontSize: 60,
                         fontWeight: FontWeight.bold,
                       ),
@@ -101,7 +102,7 @@ class DecisionCardWidget extends StatelessWidget {
                   height: 70,
                   width: 4,
                   decoration: const BoxDecoration(
-                    color: Color(0xFFEEEEE5),
+                    color: CustomColors.pcBackground,
                     borderRadius: BorderRadius.all(
                       Radius.circular(5),
                     ),
@@ -112,7 +113,7 @@ class DecisionCardWidget extends StatelessWidget {
                     const Text(
                       "Cons",
                       style: TextStyle(
-                        color: Color(0xFFD11654),
+                        color: CustomColors.pcRed,
                         fontSize: 20,
                       ),
                       textAlign: TextAlign.center,
@@ -120,7 +121,7 @@ class DecisionCardWidget extends StatelessWidget {
                     Text(
                       "$consNumber",
                       style: const TextStyle(
-                        color: Color(0xFFD11654),
+                        color: CustomColors.pcRed,
                         fontSize: 60,
                         fontWeight: FontWeight.bold,
                       ),
@@ -138,11 +139,11 @@ class DecisionCardWidget extends StatelessWidget {
 
   Color _getHeaderColor() {
     if (prosNumber > consNumber) {
-      return const Color(0xFF338162);
+      return CustomColors.pcGreen;
     } else if (prosNumber < consNumber) {
-      return const Color(0xFFD11654);
+      return CustomColors.pcRed;
     } else {
-      return const Color(0xFF562B42);
+      return CustomColors.pcPurple;
     }
   }
 }

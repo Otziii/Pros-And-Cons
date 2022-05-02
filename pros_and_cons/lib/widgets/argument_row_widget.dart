@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class ArgumentRowWidget extends StatelessWidget {
   final bool isPro;
   final String title;
@@ -30,9 +32,7 @@ class ArgumentRowWidget extends StatelessWidget {
                   title,
                   style: TextStyle(
                     backgroundColor: Colors.white,
-                    color: isPro
-                        ? const Color(0xFF338162)
-                        : const Color(0xFFD11654),
+                    color: isPro ? CustomColors.pcGreen : CustomColors.pcRed,
                     fontSize: 20,
                   ),
                 ),
@@ -50,8 +50,7 @@ class ArgumentRowWidget extends StatelessWidget {
               child: Text(
                 "$score",
                 style: TextStyle(
-                  color:
-                      isPro ? const Color(0xFF338162) : const Color(0xFFD11654),
+                  color: isPro ? CustomColors.pcGreen : CustomColors.pcRed,
                   fontSize: 20,
                 ),
               ),
@@ -62,7 +61,3 @@ class ArgumentRowWidget extends StatelessWidget {
     );
   }
 }
-
-// Green:   Color(0xFF338162)
-// Red:     Color(0xFFD11654)
-// Purple:  Color(0xFF562B42)

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class ImportanceBoxWidget extends StatelessWidget {
   final int value;
   final bool isProSelected;
@@ -53,9 +55,9 @@ class ImportanceBoxWidget extends StatelessWidget {
   Color _getCorrectColor() {
     if (isSelected) {
       if (isProSelected) {
-        return const Color(0xFF338162);
+        return CustomColors.pcGreen;
       } else {
-        return const Color(0xFFD11654);
+        return CustomColors.pcRed;
       }
     } else {
       return Colors.black;
@@ -75,7 +77,3 @@ class ImportanceBoxWidget extends StatelessWidget {
     }
   }
 }
-
-// Green:   Color(0xFF338162)
-// Red:     Color(0xFFD11654)
-// Purple:  Color(0xFF562B42)

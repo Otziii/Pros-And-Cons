@@ -5,6 +5,8 @@ import 'package:pros_and_cons/models/decision.dart';
 import 'package:pros_and_cons/screens/argument_page.dart';
 import 'package:pros_and_cons/widgets/argument_row_widget.dart';
 
+import '../colors.dart';
+
 class DecisionPage extends StatefulWidget {
   final Decision? decision;
 
@@ -42,11 +44,11 @@ class _DecisionPageState extends State<DecisionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFEEEEEE),
+        backgroundColor: CustomColors.pcBackground,
         elevation: 0,
         foregroundColor: Colors.black,
         automaticallyImplyLeading: false,
-        leadingWidth: 100,
+        leadingWidth: 500,
         leading: InkWell(
           onTap: _saveAndExit,
           child: Row(
@@ -81,7 +83,7 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
         ],
       ),
-      backgroundColor: Color(0xFFEEEEEE),
+      backgroundColor: CustomColors.pcBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () {
@@ -104,7 +106,7 @@ class _DecisionPageState extends State<DecisionPage> {
                   maxLines: 2,
                   style: const TextStyle(
                     fontSize: 25,
-                    color: Color(0xFF211551),
+                    color: Colors.black,
                   ),
                 ),
                 Visibility(
@@ -131,14 +133,14 @@ class _DecisionPageState extends State<DecisionPage> {
                                 const Text(
                                   "Pros",
                                   style: TextStyle(
-                                    color: Color(0xFF338162),
+                                    color: CustomColors.pcGreen,
                                     fontSize: 20,
                                   ),
                                 ),
                                 Text(
                                   "$_prosSum",
                                   style: const TextStyle(
-                                    color: Color(0xFF338162),
+                                    color: CustomColors.pcGreen,
                                     fontSize: 40,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -160,14 +162,14 @@ class _DecisionPageState extends State<DecisionPage> {
                                 const Text(
                                   "Cons",
                                   style: TextStyle(
-                                    color: Color(0xFFD11654),
+                                    color: CustomColors.pcRed,
                                     fontSize: 20,
                                   ),
                                 ),
                                 Text(
                                   "$_consSum",
                                   style: const TextStyle(
-                                    color: Color(0xFFD11654),
+                                    color: CustomColors.pcRed,
                                     fontSize: 40,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -329,9 +331,9 @@ class _DecisionPageState extends State<DecisionPage> {
 
   Color _getResultColor() {
     if (_prosSum > _consSum) {
-      return const Color(0xFF338162);
+      return CustomColors.pcGreen;
     } else if (_prosSum < _consSum) {
-      return const Color(0xFFD11654);
+      return CustomColors.pcRed;
     } else {
       return Colors.black87;
     }
