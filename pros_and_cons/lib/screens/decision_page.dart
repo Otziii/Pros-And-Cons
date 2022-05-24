@@ -99,7 +99,7 @@ class _DecisionPageState extends State<DecisionPage> {
                   controller: _textController,
                   keyboardType: TextInputType.multiline,
                   decoration: const InputDecoration(
-                    hintText: "Whats your decision?",
+                    hintText: "Type your decision...",
                     border: InputBorder.none,
                   ),
                   textAlign: TextAlign.center,
